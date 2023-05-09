@@ -53,31 +53,31 @@ const AuthForm = () => {
   
     if (variant === 'REGISTER') {
       axios.post('/api/register', data)
-      .then(() => signIn('credentials', {
+      .then(() => signIn('Credenciales', {
         ...data,
         redirect: false,
       }))
       .then((callback) => {
         if (callback?.error) {
-          toast.error('Invalid credentials!');
+          toast.error('Datos Incorrectos!');
         }
 
         if (callback?.ok) {
           router.push('/conversations')
         }
       })
-      .catch(() => toast.error('Something went wrong!'))
+      .catch(() => toast.error('Ocurrió un error!'))
       .finally(() => setIsLoading(false))
     }
 
     if (variant === 'LOGIN') {
-      signIn('credentials', {
+      signIn('Credenciales', {
         ...data,
         redirect: false
       })
       .then((callback) => {
         if (callback?.error) {
-          toast.error('Invalid credentials!');
+          toast.error('Datos Incorrectos!');
         }
 
         if (callback?.ok) {
@@ -94,7 +94,7 @@ const AuthForm = () => {
     signIn(action, { redirect: false })
       .then((callback) => {
         if (callback?.error) {
-          toast.error('Invalid credentials!');
+          toast.error('Datos Incorrectos!');
         }
 
         if (callback?.ok) {
